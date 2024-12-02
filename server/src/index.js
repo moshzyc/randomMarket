@@ -10,20 +10,20 @@ const allowedOrigins = [
   "http://localhost:5173", // הפיתוח המקומי
   "https://ramdomarket.netlify.app", // הדומיין של האתר
 ]
+app.use(express.json())
 app.use(
   cors({
     origin: (origin, callback) => {
-      // בדוק אם ה-origin קיים ברשימה
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true) // אפשר את הבקשה
       } else {
-        callback(new Error("Not allowed by CORS")) // חסום בקשות לא מורשות
+        callback(new Error("Not allowed by CORS"))
       }
     },
-    credentials: true, // מאפשר שליחת עוגיות
+    credentials: true, // אפשר שליחה של עוגיות
   })
 )
-app.use(express.json())
+
 app.use(cookieParser())
 app.use((req, _, next) => {
   console.log(req.method, req.originalUrl)
