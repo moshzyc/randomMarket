@@ -34,7 +34,7 @@ const userCtrl = {
       res.cookie("access_token", "Bearer " + token, {
         httpOnly: true,
         secure: true,
-        // sameSite: "none",
+        sameSite: "none",
       })
       res.status(201).json({ ...user._doc, password: "****" })
     } catch (error) {
