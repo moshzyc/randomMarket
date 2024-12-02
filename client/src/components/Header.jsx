@@ -11,7 +11,7 @@ const Header = () => {
     <header>
       <div className="mycontainer header">
         <img
-          onClick={() => navigate("/")}
+          // onClick={() => navigate("/")}
           className="headLogo"
           src="./src/assets/photos/large.png"
           alt=""

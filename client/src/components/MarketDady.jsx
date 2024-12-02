@@ -1,10 +1,14 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Header from "./Header"
 import Footer from "./Footer"
 import { NavLink, Outlet, useLocation } from "react-router-dom"
 
 export const MarketDady = () => {
   const [active, setActive] = useState(1)
+  useEffect(() => {
+    if (isActive) setActive(2)
+  }, [])
+  const isActive = location.pathname.startsWith("/market/marketRnd")
 
   return (
     <>
@@ -14,7 +18,7 @@ export const MarketDady = () => {
           <NavLink
             onClick={() => {
               setActive(1)
-              console.log("acvive")
+              // console.log("acvive")
             }}
             to="/market"
             className={`mNavLink ${active == 1 && "mNavActiv"}`}
@@ -24,7 +28,7 @@ export const MarketDady = () => {
           <NavLink
             onClick={() => {
               setActive(2)
-              console.log("acvive")
+              // console.log("acvive")
             }}
             to="/market/marketRnd"
             onLoad={() => setActive(2)}

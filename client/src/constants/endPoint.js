@@ -1,5 +1,5 @@
-// const BASE_URL = "http://localhost:3000/"
-const BASE_URL = "https://randommarket.onrender.com/"
+const BASE_URL = "http://localhost:3000/"
+// const BASE_URL = "https://randommarket.onrender.com/"
 const USER_URL = BASE_URL + "user/"
 
 const SIGNUP_URL = USER_URL + "signup"
