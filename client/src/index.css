@@ -77,10 +77,10 @@ header {
 }
 
 .store {
-  margin: 0 auto;
-  display: flex;
+  /* display: flex; */
   width: 100%;
   justify-content: center;
+  justify-items: center;
   flex-wrap: wrap;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -167,7 +167,6 @@ header {
     width: 300px;
     border: rgba(70, 62, 62, 0.546) solid 3px;
     padding: 1px;
-    margin: 0 auto;
   }
   .hcard {
     width: 100%;

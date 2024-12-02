@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:3000/"
+// const BASE_URL = "http://localhost:3000/"
+const BASE_URL = "https://randommarket.onrender.com/"
 const USER_URL = BASE_URL + "user/"
 
 const SIGNUP_URL = USER_URL + "signup"
@@ -7,7 +8,6 @@ const LOGOUT_URL = USER_URL + "logout"
 const GET_INFO_URL = USER_URL + "info"
 const PRODUCTS_URL = BASE_URL + "products"
 const PRODUCTS_CATEGORIES_URL = PRODUCTS_URL + "/categories"
-
 
 export {
   SIGNUP_URL,

@@ -52,9 +52,9 @@ const Header = () => {
             <button
               onClick={async () => {
                 await axios.get(LOGOUT_URL)
-                setUser("")
+                setUser(null)
                 navigate("/")
-                location.reload()
+                // location.reload()
               }}
               className="btnDelete"
             >

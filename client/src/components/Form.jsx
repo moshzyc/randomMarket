@@ -38,7 +38,7 @@ export default function Form({ isSignup }) {
         const { data } = await axios.post(LOGIN_URL, formValues)
         setUser(data)
         navigate("/market")
-        location.reload()
+        // location.reload()
       }
     } catch (error) {
       alert(error)
