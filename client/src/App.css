@@ -1,0 +1,199 @@
+.hNavLink {
+  text-decoration: none;
+  color: white;
+}
+.hNavLink:hover {
+  text-decoration: underline;
+}
+
+.active {
+  text-decoration: underline;
+}
+.fNavLink {
+  text-decoration: none;
+  color: black;
+}
+.fNavLink:hover {
+  text-decoration: underline;
+}
+
+.cImg {
+  height: 50%;
+  width: 50%;
+  margin: 0 auto;
+  object-fit: contain;
+  cursor: pointer;
+}
+.cTitle {
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+}
+.cTitle:hover{
+  text-decoration: underline;
+}
+.cCategory {
+  font-size: medium;
+}
+.cBtn {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  margin: 2px;
+}
+.cBtn > a {
+  color: white;
+  text-decoration: none;
+}
+.cBtn:hover {
+  background-color: rgb(41, 37, 37);
+}
+.cBtn:active {
+  transform: scale(0.98);
+}
+.categoryBtn {
+  border: solid 1px black;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  height: 30px;
+}
+.categoryBtn:hover {
+  background-color: rgb(41, 37, 37);
+  color: white;
+}
+.categoryBtn:active {
+  transform: scale(0.98);
+}
+.homeIcons {
+  font-size: 700%;
+}
+.selectCatrgory{
+  margin: 5px;
+  border-radius: 10px;
+  border: #333 solid 1px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+thead {
+  background-color: #333;
+  color: white;
+}
+.btnDelete {
+  color: white;
+  background: red;
+  border-radius: 20px;
+  border: none;
+}
+.btnDelete:hover {
+  background: rgb(243, 59, 59);
+}
+.btnDelete:active {
+  transform: scale(0.98);
+}
+.aboutInfo {
+  text-align: right;
+  width: 75%;
+  font-size: large;
+  margin: 0 auto;
+}
+.conUs {
+  font-size: larger;
+  font-weight: bold;
+  margin-right: 13%;
+  color: black;
+  text-decoration: none;
+}
+.conUs:hover {
+  text-decoration: underline;
+}
+.navInfo {
+  display: flex;
+  gap: 20px;
+}
+.pImg {
+  width: 300px;
+}
+.pTitle {
+  font-size: xx-large;
+}
+.page404 {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+.formsInputs {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 100%;
+}
+.fomBtn {
+  padding: 2px;
+  border: none;
+  background: black;
+  border-radius: 10px;
+  color: white;
+  font-size: large;
+}
+.fomBtn:hover {
+  background: rgb(27, 26, 26);
+}
+.fomBtn:active {
+  transform: scale(0.98);
+  background: rgb(39, 37, 37);
+}
+.formTitles {
+  font-size: xx-large;
+  color: black;
+  font: bolder;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.mNav{
+  text-align: center;
+  font-weight: bold;
+  font-size: medium;
+}
+.mNavLink {
+  text-decoration: none;
+  color: black;
+}
+.mNavLink:hover {
+  text-decoration: underline;
+}
+.mNavActiv{
+  text-decoration: underline;
+}
+.marketNav {
+    display: inline-flex;
+    gap: 10px;
+    border: black 3px solid;
+    border-radius: 40px;
+    padding: 3px;
+}
+@media (max-width: 768px) {
+.categoryBtn:hover {
+  background-color: white;
+  color: black;
+}
+  
+}

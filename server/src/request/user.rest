@@ -1,0 +1,22 @@
+### signup
+post http://localhost:3000/user/signup
+Content-Type: application/json
+
+{
+    "name":"john",
+    "password":"123456",
+    "email":"john4@gmail.com"
+}
+### login
+post http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "password":"123456",
+    "email":"john4@gmail.com",
+    "birthDate":"01/01/2024"
+}
+### info
+get http://localhost:3000/user/info
+Content-Type: application/json
+Cookie: access_token=Bearer%20eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNiNWVmYzA2M2ExM2EzYTZmZWZhZTgiLCJpYXQiOjE3MzIwMTgwNTAsImV4cCI6MTczNDYxMDA1MH0.knroIECADuIgjPeO43OH20FXpe7mvGlDz99iaCYRVu8; Path=/; HttpOnly
