@@ -9,35 +9,59 @@ const Cart = () => {
 
     const tableRowGenerator = () => {
         const tableRowArr = cart.map((item, index) => {
-            return <TableRow key={index} number={index + 1} title={item.title} category={item.category} price={item.price} />
+            return (
+              <TableRow
+                key={index}
+                number={index + 1}
+                title={item.title}
+                category={item.category}
+                amount={item.amount}
+                price={item.price}
+              />
+            )
         })
         return tableRowArr;
     }
     return (
-        <>
-            <Header />
-            <main>
-                <div className="mycontainer">
-                    <table >
-                        <thead >
-                            <tr>
-                                <th>#</th>
-                                <th>שם המוצר</th>
-                                <th>קטגוריה</th>
-                                <th>מחיר</th>
-                                <th>הסרה</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableRowGenerator()}
-                            {!cart[0]&&<TableRow number='0' title="העגלה ריקה" category="ריק" price="0"/>}
-                            {<TableRow number='' title="סה''כ לתשלום" category=" " price={cartSum}/>}
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-            <Footer />
-        </>
+      <>
+        <Header />
+        <main>
+          <div className="mycontainer">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>שם המוצר</th>
+                  <th>קטגוריה</th>
+                  <th className="amountTh">כמות</th>
+                  <th>מחיר</th>
+                  <th>הסרה</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tableRowGenerator()}
+                {!cart[0] && (
+                  <TableRow
+                    number="0"
+                    title="העגלה ריקה"
+                    category="ריק"
+                    price="0"
+                  />
+                )}
+                {
+                  <TableRow
+                    number=" "
+                    title="סה''כ לתשלום"
+                    category=" "
+                    price={cartSum}
+                  />
+                }
+              </tbody>
+            </table>
+          </div>
+        </main>
+        <Footer />
+      </>
     )
 }
 

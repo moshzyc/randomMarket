@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Card = (props) => {
     const navigate = useNavigate();
     const { addItem, user, SAVE, roundToTwo } = useContext(StoreContext);
-    const item = { title: props.title, category: props.category, price: props.price };
+    const item = { title: props.title, category: props.category, price: props.price, amount: 1};
 
     const productNavigate = () => {
         navigate('/product', {

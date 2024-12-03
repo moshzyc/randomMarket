@@ -22,7 +22,7 @@ function App() {
   const [cart, setCart] = useState([])
   const [cartSum, setCartSum] = useState(0)
   let [user, setUser] = useState(null)
-  const [admin, setAdmin] = useState("");
+  const [admin, setAdmin] = useState("")
   const SAVE = 0.5
   const roundToTwo = (num) => {
     return Math.round(num * 100) / 100
@@ -40,10 +40,8 @@ function App() {
 
   useEffect(() => {
     console.log(user)
-    
   }, [user])
- 
-  
+
   useEffect(() => {
     checkIfUserConnected()
   }, [])
@@ -57,26 +55,73 @@ function App() {
   }
 
   const addItem = (item) => {
+    let exist = false
+    cart.forEach((element) => {
+      element.title === item.title &&
+        roundToTwo((element.price += item.price)) &&
+        (element.amount += item.amount) &&
+        (exist = true)
+    })
     const newCart = [...cart]
-    newCart.push(item)
+    !exist && newCart.push(item)
     setCart(newCart)
     setCartSum(roundToTwo(cartSum + item.price))
     // console.log(item.price-item.price*SAVE);
     const sortedData = localStorage.getItem("cart")
     const existingitem = sortedData ? JSON.parse(sortedData) : []
 
-    existingitem.push(item)
+    exist = false
+    existingitem.forEach((element) => {
+      element.title === item.title &&
+        roundToTwo((element.price += item.price)) &&
+        (element.amount += item.amount) &&
+        (exist = true)
+    })
+
+    !exist && existingitem.push(item)
 
     localStorage.setItem("cart", JSON.stringify(existingitem))
   }
   // user?setCartSum(roundToTwo(cartSum + item.price-item.price*SAVE)):setCartSum(roundToTwo(cartSum + item.price));
   const deletItem = (number) => {
-    if (window.confirm("are you sure you want delete this very cool item?")) {
+    setCartSum(roundToTwo(cartSum - cart[number - 1].price))
+    const newCart = cart.filter((item, index) => index + 1 != number)
+    setCart(newCart)
+    if ([...cart]) localStorage.setItem("cart", JSON.stringify(newCart))
+    else localStorage.clear()
+  }
+  const minusAmount = (number) => {
+    if (cart[number - 1].amount > 1) {
+      setCartSum(
+        roundToTwo(cartSum - cart[number - 1].price / cart[number - 1].amount)
+      )
+      cart[number - 1].price -= roundToTwo(
+        cart[number - 1].price / cart[number - 1].amount
+      )
+      cart[number - 1].amount--
+      const newCart = [...cart]
+      setCart(newCart)
+      if ([...cart]) localStorage.setItem("cart", JSON.stringify(newCart))
+      else localStorage.clear()
+    } else {
+      setCartSum(roundToTwo(cartSum - cart[number - 1].price))
       const newCart = cart.filter((item, index) => index + 1 != number)
       setCart(newCart)
       if ([...cart]) localStorage.setItem("cart", JSON.stringify(newCart))
       else localStorage.clear()
     }
+  }
+  const addAnother = (number) => {
+    setCartSum(
+      roundToTwo(cartSum + cart[number - 1].price / cart[number - 1].amount)
+    )
+    cart[number - 1].price += roundToTwo(
+      cart[number - 1].price / cart[number - 1].amount
+    )
+    cart[number - 1].amount++
+    const newCart = [...cart]
+    setCart(newCart)
+    localStorage.setItem("cart", JSON.stringify(newCart))
   }
   return (
     <>
@@ -89,9 +134,12 @@ function App() {
           cart,
           cartSum,
           setCartSum,
+          setCart,
           addItem,
           deletItem,
           roundToTwo,
+          minusAmount,
+          addAnother,
         }}
       >
         <BrowserRouter>

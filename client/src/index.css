@@ -1,7 +1,7 @@
-* {
-  box-sizing: border-box;
-  direction: rtl;
-}
+/* * {
+  box-sizing: border-box; 
+  direction: rtl; 
+} */
 body {
   font-family: Arial, Helvetica, sans-serif;
   direction: rtl;
@@ -31,11 +31,9 @@ header {
 .headNav {
   display: inline-flex;
   gap: 10px;
-  /* margin-right: 40px; */
   position: absolute;
   left: 5%;
-  top: 14%;
-  /* border: red 1px solid; */
+  top: 40px;
 }
 
 .headLogo {
@@ -54,6 +52,8 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 2%;
+  margin-top: 20px;
+  border-top: rgba(0, 0, 0, 0.384) solid 1px;
 }
 .footNav {
   display: inline-flex;
@@ -113,6 +113,7 @@ header {
 
 .product {
   direction: ltr;
+  /* width: 50%; */
   padding: 5%;
   display: inline-flex;
   flex-direction: column;
@@ -139,9 +140,6 @@ header {
   border-radius: 10px;
 }
 @media (max-width: 768px) {
-  body {
-    direction: ltr;
-  }
   .store {
     display: flex;
     gap: 15px;
@@ -163,7 +161,7 @@ header {
   }
   .headNav {
     left: 1%;
-    font-size: small;
+    font-size: x-small;
     top: 40px;
   }
   .myCard {
@@ -199,7 +197,7 @@ header {
   }
   .headNav {
     left: 1%;
-    font-size: small;
+    font-size: x-small;
     top: 50px;
     /* border: 1px solid white; */
     padding: 5px;

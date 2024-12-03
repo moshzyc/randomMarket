@@ -7,7 +7,7 @@ const Product = () => {
     const location = useLocation();
     const { addItem, user, roundToTwo, SAVE} = useContext(StoreContext);
     const { pic, title, category, description, price } = location.state || {};
-    const item = { title: title, category: category, price: price };
+    const item = { title: title, category: category, amount: 1, price: price }
     const userSave = () =>{
         
         return !user?price:roundToTwo(price-price*SAVE);
