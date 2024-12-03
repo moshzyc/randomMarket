@@ -32,7 +32,8 @@ header {
   display: inline-flex;
   gap: 10px;
   position: absolute;
-  left: 10%;
+  left: 5%;
+  top: 14%;
 }
 
 .headLogo {
@@ -156,12 +157,13 @@ header {
     /* height: 140px; */
   }
   .headLogo {
-    height: 70px;
+    height: 60px;
     /* padding-left: 3px; */
   }
   .headNav {
-    left: 5%;
+    left: 1%;
     font-size: small;
+    top: 10%;
   }
   .myCard {
     width: 300px;
@@ -185,15 +187,19 @@ header {
     flex-direction: column;
   }
 }
-@media (max-width:480) {
-    .header {
-    padding-top: 10%;
-    padding-right: 2%;
-    padding-bottom: 25px;
+@media (max-width: 400px) {
+  .header {
+    padding-top: 2%;
+    padding-bottom: 12px;
     /* height: 140px; */
   }
   .headLogo {
-    height: 70px;
-    padding-left: 3px;
+    height: 50px;
+
+  }
+    .headNav {
+    left: 1%;
+    font-size: small;
+    top: 9%;
   }
 }
