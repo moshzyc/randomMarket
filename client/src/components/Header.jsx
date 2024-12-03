@@ -3,6 +3,7 @@ import { StoreContext } from "../App"
 import { NavLink, useNavigate } from "react-router-dom"
 import { LOGOUT_URL } from "../constants/endPoint"
 import axios from "axios"
+import logo from "../assets/photos/large.png"
 
 const Header = () => {
   const { user, setUser, admin } = useContext(StoreContext)
@@ -11,9 +12,9 @@ const Header = () => {
     <header>
       <div className="mycontainer header">
         <img
-          // onClick={() => navigate("/")}
+          onClick={() => navigate("/")}
           className="headLogo"
-          src="./src/assets/photos/large.png"
+          src={logo}
           alt=""
         />
         <h1 className="headerh1">סתם חנות רנדומלית</h1>
@@ -54,7 +55,7 @@ const Header = () => {
                 await axios.get(LOGOUT_URL)
                 setUser(null)
                 navigate("/")
-                // location.reload()
+                location.reload()
               }}
               className="btnDelete"
             >
