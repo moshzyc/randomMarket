@@ -31,9 +31,11 @@ header {
 .headNav {
   display: inline-flex;
   gap: 10px;
+  /* margin-right: 40px; */
   position: absolute;
   left: 5%;
   top: 14%;
+  /* border: red 1px solid; */
 }
 
 .headLogo {
@@ -45,8 +47,7 @@ header {
 }
 
 .headerh1 {
-  text-align: center;
-  margin-left: 100px;
+  justify-self: center;
   color: wheat;
 }
 .footer {
@@ -158,12 +159,12 @@ header {
   }
   .headLogo {
     height: 60px;
-    /* padding-left: 3px; */
+    margin-left: 10px;
   }
   .headNav {
     left: 1%;
     font-size: small;
-    top: 10%;
+    top: 40px;
   }
   .myCard {
     width: 300px;
@@ -190,16 +191,17 @@ header {
 @media (max-width: 400px) {
   .header {
     padding-top: 2%;
-    padding-bottom: 12px;
-    /* height: 140px; */
+    padding-bottom: 20px;
+    height: fit-content;
   }
   .headLogo {
     height: 50px;
-
   }
-    .headNav {
+  .headNav {
     left: 1%;
     font-size: small;
-    top: 9%;
+    top: 50px;
+    /* border: 1px solid white; */
+    padding: 5px;
   }
 }
