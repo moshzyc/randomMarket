@@ -84,11 +84,11 @@ function App() {
   }
   // user?setCartSum(roundToTwo(cartSum + item.price-item.price*SAVE)):setCartSum(roundToTwo(cartSum + item.price));
   const deletItem = (number) => {
-    setCartSum(roundToTwo(cartSum - cart[number - 1].price))
-    const newCart = cart.filter((item, index) => index + 1 != number)
-    setCart(newCart)
-    if ([...cart]) localStorage.setItem("cart", JSON.stringify(newCart))
-    else localStorage.clear()
+      setCartSum(roundToTwo(cartSum - cart[number - 1].price))
+      const newCart = cart.filter((item, index) => index + 1 != number)
+      setCart(newCart)
+      if ([...cart]) localStorage.setItem("cart", JSON.stringify(newCart))
+      else localStorage.clear()
   }
   const minusAmount = (number) => {
     if (cart[number - 1].amount > 1) {
@@ -111,7 +111,7 @@ function App() {
       else localStorage.clear()
     }
   }
-  const addAnother = (number) => {
+  const addAnother=(number)=>{
     setCartSum(
       roundToTwo(cartSum + cart[number - 1].price / cart[number - 1].amount)
     )

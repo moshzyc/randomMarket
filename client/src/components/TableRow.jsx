@@ -41,7 +41,9 @@ const TableRow = (props) => {
         </th>
       )) || <th></th>}
       <th>
-        {user ? roundToTwo(props.price - props.price * SAVE) : props.price}
+        {user
+          ? roundToTwo(props.price - props.price * SAVE)
+          : parseFloat(props.price).toFixed(2)}
       </th>
       {props.category != "ריק" && props.category != " " && (
         <th>
@@ -61,11 +63,7 @@ const TableRow = (props) => {
           <button
             className="btnDelete"
             onClick={() => {
-              if (
-                window.confirm(
-                  "אתה בטוח רוצה למחוק הכל?"
-                )
-              ) {
+              if (window.confirm("אתה בטוח רוצה למחוק הכל?")) {
                 setCart([])
                 setCartSum(0)
                 localStorage.clear("cart")
