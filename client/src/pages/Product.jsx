@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
 import Header from '../components/Header'
 import { useLocation } from 'react-router-dom';
-import { StoreContext } from '../App';
+import { UserContext } from '../contexts/UserContextpProvider';
+import { StoreContext } from '../contexts/StoreContaxtProvider';
 
 const Product = () => {
     const location = useLocation();
-    const { addItem, user, roundToTwo, SAVE} = useContext(StoreContext);
+    const { addItem, roundToTwo, SAVE} = useContext(StoreContext);
+    const { user } = useContext(UserContext)
     const { pic, title, category, description, price } = location.state || {};
     const item = { title: title, category: category, amount: 1, price: price }
     const userSave = () =>{

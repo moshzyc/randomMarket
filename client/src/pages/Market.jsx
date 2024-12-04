@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
 import Card from "../components/Card"
-import { NavLink, Outlet } from "react-router-dom"
-
 const Market = () => {
   const [products, setProducts] = useState([])
   const [currentArr, setCurrentArr] = useState([])

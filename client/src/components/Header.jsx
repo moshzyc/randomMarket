@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
-import { StoreContext } from "../App"
 import { NavLink, useNavigate } from "react-router-dom"
 import { LOGOUT_URL } from "../constants/endPoint"
 import axios from "axios"
 import logo from "../assets/photos/large.png"
+import { UserContext } from "../contexts/UserContextpProvider"
 
 const Header = () => {
-  const { user, setUser, admin } = useContext(StoreContext)
+  const { user, setUser, admin } = useContext(UserContext)
   const navigate = useNavigate()
   return (
     <header>

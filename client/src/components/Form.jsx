@@ -3,14 +3,14 @@ import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { SIGNUP_URL } from "../constants/endPoint"
 import { LOGIN_URL } from "../constants/endPoint"
-import { StoreContext } from "../App"
+import { UserContext } from "../contexts/UserContextpProvider"
 
 // ure mail: john4@gmail.com
 // admin mail: john3@gmail.com
 export default function Form({ isSignup }) {
   const [error, setError] = useState("")
   const navigate = useNavigate()
-  const { setUser, setCartSum, cartSum } = useContext(StoreContext)
+  const { user, setUser } = useContext(UserContext)
   const [formValues, setFormValues] = useState({
     name: " ",
     email: " ",

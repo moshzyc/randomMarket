@@ -1,10 +1,12 @@
 import React, { useContext } from "react"
-import { StoreContext } from "../App"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../contexts/UserContextpProvider"
+import { StoreContext } from "../contexts/StoreContaxtProvider"
 
 const Card = (props) => {
   const navigate = useNavigate()
-  const { addItem, user, SAVE, roundToTwo } = useContext(StoreContext)
+  const { addItem, SAVE, roundToTwo } = useContext(StoreContext)
+  const { user} = useContext(UserContext)
   const item = {
     title: props.title,
     category: props.category,

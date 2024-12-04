@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { StoreContext } from '../App';
 import TableRow from '../components/Tablerow';
+import { StoreContext } from '../contexts/StoreContaxtProvider';
 
 const Cart = () => {
     const {cart, cartSum } = useContext(StoreContext);

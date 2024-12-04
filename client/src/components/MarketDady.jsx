@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Header from "./Header"
 import Footer from "./Footer"
-import { NavLink, Outlet, useLocation } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 
 export const MarketDady = () => {
   const [active, setActive] = useState(1)

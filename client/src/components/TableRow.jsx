@@ -1,10 +1,10 @@
 import React, { useContext } from "react"
-import { StoreContext } from "../App"
+import { StoreContext } from "../contexts/StoreContaxtProvider"
+import { UserContext } from "../contexts/UserContextpProvider"
 
 const TableRow = (props) => {
   const {
     SAVE,
-    user,
     deletItem,
     setCart,
     setCartSum,
@@ -13,6 +13,7 @@ const TableRow = (props) => {
     minusAmount,
     addAnother,
   } = useContext(StoreContext)
+  const { user, admin } = useContext(UserContext)
 
   return (
     <tr>
@@ -51,7 +52,6 @@ const TableRow = (props) => {
             className="btnDelete"
             onClick={() => {
               deletItem(props.number)
-              // user?setCartSum(roundToTwo(cartSum - props.price-props.price*SAVE)):
             }}
           >
             הסר

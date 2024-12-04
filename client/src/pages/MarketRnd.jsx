@@ -3,7 +3,6 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Card from "../components/Card"
 import { PRODUCTS_URL, PRODUCTS_CATEGORIES_URL } from "../constants/endPoint"
-import { StoreContext } from "../App"
 import axios from "axios"
 const MarketRnd = () => {
   const [products, setProducts] = useState([])
@@ -11,8 +10,6 @@ const MarketRnd = () => {
   const [currentArr, setCurrentArr] = useState([])
   const [saveArr, setSaveArr] = useState([])
   const [category, setCateroy] = useState("")
-  const { user } = useContext(StoreContext)
-
   const getProdact = async () => {
     try {
       const DATA_URL = PRODUCTS_URL
