@@ -17,34 +17,51 @@ export const StoreContaxtProvider = ({ children }) => {
     )
     setCartSum(totalSum)
   }, [])
-  const addItem = (item) => {
-    let exist = false
-    cart.forEach((element) => {
-      element.title === item.title &&
-        roundToTwo((element.price += item.price)) &&
-        (element.amount += item.amount) &&
-        (exist = true)
-    })
-    const newCart = [...cart]
-    !exist && newCart.push(item)
-    setCart(newCart)
-    setCartSum(roundToTwo(cartSum + item.price))
-    // console.log(item.price-item.price*SAVE);
-    const sortedData = localStorage.getItem("cart")
-    const existingitem = sortedData ? JSON.parse(sortedData) : []
+ const addItem = (item) => {
+   let exist = false
 
-    exist = false
-    existingitem.forEach((element) => {
-      element.title === item.title &&
-        roundToTwo((element.price += item.price)) &&
-        (element.amount += item.amount) &&
-        (exist = true)
-    })
+   const updatedCart = cart.map((element) => {
+     if (element.title === item.title) {
+       exist = true
+       return {
+         ...element,
+         price: roundToTwo(element.price + item.price),
+         amount: element.amount + item.amount,
+       }
+     }
+     return element
+   })
 
-    !exist && existingitem.push(item)
+   if (!exist) {
+     updatedCart.push(item)
+   }
 
-    localStorage.setItem("cart", JSON.stringify(existingitem))
-  }
+   setCart(updatedCart)
+   setCartSum(roundToTwo(cartSum + item.price))
+
+   const sortedData = localStorage.getItem("cart")
+   const existingItems = sortedData ? JSON.parse(sortedData) : []
+
+   exist = false
+   const updatedLocalCart = existingItems.map((element) => {
+     if (element.title === item.title) {
+       exist = true
+       return {
+         ...element,
+         price: roundToTwo(element.price + item.price),
+         amount: element.amount + item.amount,
+       }
+     }
+     return element
+   })
+
+   if (!exist) {
+     updatedLocalCart.push(item)
+   }
+
+   localStorage.setItem("cart", JSON.stringify(updatedLocalCart))
+ }
+
   const deletItem = (number) => {
     setCartSum(roundToTwo(cartSum - cart[number - 1].price))
     const newCart = cart.filter((item, index) => index + 1 != number)
@@ -53,38 +70,40 @@ export const StoreContaxtProvider = ({ children }) => {
     else localStorage.clear()
   }
   const minusAmount = (number) => {
-    if (cart[number - 1].amount > 1) {
-      setCartSum(
-        roundToTwo(cartSum - cart[number - 1].price / cart[number - 1].amount)
-      )
-      cart[number - 1].price -= roundToTwo(
-        cart[number - 1].price / cart[number - 1].amount
-      )
-      cart[number - 1].amount--
-      const newCart = [...cart]
-      setCart(newCart)
-      if ([...cart]) localStorage.setItem("cart", JSON.stringify(newCart))
-      else localStorage.clear()
+    const index = number - 1
+    const updatedCart = [...cart]
+    const item = updatedCart[index]
+
+    if (item.amount > 1) {
+      const pricePerUnit = roundToTwo(item.price / item.amount)
+      item.amount--
+      item.price = roundToTwo(item.price - pricePerUnit)
+      setCartSum(roundToTwo(cartSum - pricePerUnit))
     } else {
-      setCartSum(roundToTwo(cartSum - cart[number - 1].price))
-      const newCart = cart.filter((item, index) => index + 1 != number)
-      setCart(newCart)
-      if ([...cart]) localStorage.setItem("cart", JSON.stringify(newCart))
-      else localStorage.clear()
+      updatedCart.splice(index, 1)
+      setCartSum(roundToTwo(cartSum - item.price))
+    }
+
+    setCart(updatedCart)
+    if (updatedCart.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(updatedCart))
+    } else {
+      localStorage.clear()
     }
   }
-  const addAnother = (number) => {
-    setCartSum(
-      roundToTwo(cartSum + cart[number - 1].price / cart[number - 1].amount)
-    )
-    cart[number - 1].price += roundToTwo(
-      cart[number - 1].price / cart[number - 1].amount
-    )
-    cart[number - 1].amount++
-    const newCart = [...cart]
-    setCart(newCart)
-    localStorage.setItem("cart", JSON.stringify(newCart))
-  }
+ const addAnother = (number) => {
+   const index = number - 1
+   const updatedCart = [...cart]
+   const item = updatedCart[index]
+   const pricePerUnit = roundToTwo(item.price / item.amount)
+
+   item.amount++
+   item.price = roundToTwo(item.price + pricePerUnit)
+
+   setCart(updatedCart)
+   setCartSum(roundToTwo(cartSum + pricePerUnit))
+   localStorage.setItem("cart", JSON.stringify(updatedCart))
+ }
   return (
     <StoreContext.Provider
       value={{
