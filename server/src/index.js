@@ -7,20 +7,20 @@ import "./db/mongoConnect.js"
 
 const app = express()
 const allowedOrigins = [
-  "http://localhost:5173", // הפיתוח המקומי
-  "https://ramdomarket.netlify.app", // הדומיין של האתר
+  "http://localhost:5173", 
+  "https://ramdomarket.netlify.app",
 ]
 app.use(express.json())
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true) // אפשר את הבקשה
+        callback(null, true)
       } else {
         callback(new Error("Not allowed by CORS"))
       }
     },
-    credentials: true, // אפשר שליחה של עוגיות
+    credentials: true,
   })
 )
 
