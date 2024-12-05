@@ -18,7 +18,6 @@ export const MarketDady = () => {
           <NavLink
             onClick={() => {
               setActive(1)
-              // console.log("acvive")
             }}
             to="/market"
             className={`mNavLink ${active == 1 && "mNavActiv"}`}
@@ -28,7 +27,6 @@ export const MarketDady = () => {
           <NavLink
             onClick={() => {
               setActive(2)
-              // console.log("acvive")
             }}
             to="/market/marketRnd"
             onLoad={() => setActive(2)}

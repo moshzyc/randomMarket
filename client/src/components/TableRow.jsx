@@ -1,77 +1,71 @@
-import React, { useContext } from "react"
-import { StoreContext } from "../contexts/StoreContaxtProvider"
+import { useContext } from "react"
 import { UserContext } from "../contexts/UserContextpProvider"
+import { StoreContext } from "../contexts/StoreContaxtProvider"
 
-const TableRow = (props) => {
+const TableRow = ({ isOrder, number, title, category, amount, price }) => {
   const {
     SAVE,
     deletItem,
     setCart,
     setCartSum,
-    cartSum,
     roundToTwo,
     minusAmount,
     addAnother,
   } = useContext(StoreContext)
-  const { user, admin } = useContext(UserContext)
+  const { user } = useContext(UserContext)
+
+  const calculatePrice = () => roundToTwo(price - (user ? price * SAVE : 0))
+
+  const handleDeleteClick = () => {
+    if (category === " " && window.confirm("אתה בטוח רוצה למחוק הכל?")) {
+      setCart([])
+      setCartSum(0)
+      localStorage.clear("cart")
+    } else {
+      deletItem(number)
+    }
+  }
+
+  const isProductRow = category && category.trim() !== "" && category !== "ריק"
 
   return (
     <tr>
-      <th>{props.number}</th>
-      <th>{props.title}</th>
-      <th>{props.category}</th>
-      {(props.category != "ריק" && props.category != " " && (
-        <th className="amountTh">
-          <div className="amount">
-            <button
-              onClick={() => {
-                addAnother(props.number)
-              }}
-              className="plusMinusBtn"
-            >
-              +
-            </button>
-            {props.amount}
-            <button
-              onClick={() => minusAmount(props.number)}
-              className="plusMinusBtn"
-            >
-              -
-            </button>
-          </div>
-        </th>
-      )) || <th></th>}
-      <th>
-        {user
-          ? roundToTwo(props.price - props.price * SAVE)
-          : parseFloat(props.price).toFixed(2)}
-      </th>
-      {props.category != "ריק" && props.category != " " && (
+      {!isOrder && <th>{number}</th>}
+      <th>{title}</th>
+      <th>{category}</th>
+<th className={`${isOrder ? "" : "amountTh"}`}>
+  <div className="amount">
+    {!isOrder && isProductRow && (
+      <>
+        <button onClick={() => addAnother(number)} className="plusMinusBtn">
+          +
+        </button>
+      </>
+    )}
+    {amount}
+    {!isOrder && isProductRow && (
+      <>
+        <button onClick={() => minusAmount(number)} className="plusMinusBtn">
+          -
+        </button>
+      </>
+    )}
+  </div>
+</th>
+
+      <th>{calculatePrice()}</th>
+      {!isOrder && (
         <th>
-          <button
-            className="btnDelete"
-            onClick={() => {
-              deletItem(props.number)
-            }}
-          >
-            הסר
-          </button>
-        </th>
-      )}
-      {props.category === " " && (
-        <th>
-          <button
-            className="btnDelete"
-            onClick={() => {
-              if (window.confirm("אתה בטוח רוצה למחוק הכל?")) {
-                setCart([])
-                setCartSum(0)
-                localStorage.clear("cart")
-              }
-            }}
-          >
-            נקה עגלה
-          </button>
+          {isProductRow && (
+            <button className="btnDelete" onClick={handleDeleteClick}>
+              הסר
+            </button>
+          )}
+          {!isProductRow && category === " " && (
+            <button className="btnDelete" onClick={handleDeleteClick}>
+              נקה עגלה
+            </button>
+          )}
         </th>
       )}
     </tr>
