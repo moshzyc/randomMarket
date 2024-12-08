@@ -1,15 +1,8 @@
 export function clearCookie(res, cookieName) {
   res.cookie(cookieName, "", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // secure ב-HTTPS בלבד
-    sameSite: "none", // בהתאם לצורך
-    expires: new Date(0), // תאריך תפוגה ישן מנקה את העוגייה
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+    expires: new Date(0),
   })
-  // res.cookie(cookieName, "", {
-  //   httpOnly: true,
-  //   secure: true,
-  //   sameSite: "None", // חשוב לשלוח בין דומיינים שונים
-  //   partitioned: true, // הגדרת ה-cookie כ-Partitioned
-  //   expires: new Date(0), // תאריך תפוגה ישן
-  // })
 }
