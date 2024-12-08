@@ -7,7 +7,7 @@ import "./db/mongoConnect.js"
 
 const app = express()
 const allowedOrigins = [
-  "http://localhost:5173", 
+  "http://localhost:5173",
   "https://ramdomarket.netlify.app",
 ]
 app.use(express.json())
